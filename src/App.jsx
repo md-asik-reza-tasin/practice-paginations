@@ -6,6 +6,7 @@ function App() {
   const [pro, setPro] = useState([]);
   const [item, setItem] = useState([]);
   const [searchProduct, setSearchProduct] = useState("");
+  const [check, setCheck] = useState(false);
 
   const search = useRef();
 
@@ -40,7 +41,7 @@ function App() {
   // (searchProduct, pro);
 
   return (
-    <div>
+    <div className="text-center my-10">
       <input
         onChange={() => setSearchProduct(search.current.value)}
         ref={search}
@@ -51,7 +52,7 @@ function App() {
       {searchProduct.length === 0 ? (
         <div className="grid grid-cols-3 gap-3">
           {item?.map((product, idx) => (
-            <Product key={idx} product={product}></Product>
+            <Product key={idx} product={product} setCheck={setCheck}></Product>
           ))}
         </div>
       ) : (
@@ -74,6 +75,20 @@ function App() {
           ))}
         </div>
       )}
+      <div
+        className={
+          check
+            ? "absolute top-32 left-72 w-1/2 h-1/2 bg-gray-200 rounded-lg"
+            : "hidden"
+        }
+      >
+        <button
+          className="absolute bg-red-600 rounded-full w-10 right-0"
+          onClick={() => setCheck(false)}
+        >
+          x
+        </button>
+      </div>
     </div>
   );
 }

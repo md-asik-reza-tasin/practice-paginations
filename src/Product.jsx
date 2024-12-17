@@ -1,4 +1,4 @@
-export default function Product({ product }) {
+export default function Product({ product, setCheck }) {
   //   console.log(product);
 
   const { thumbnail, title } = product;
@@ -11,7 +11,7 @@ export default function Product({ product }) {
         <h2 className="card-title"></h2>
         <p>{title}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">BUY NOW</button>
+          <button onClick={() => setCheck(true)} className="btn btn-primary">BUY NOW</button>
         </div>
       </div>
     </div>
